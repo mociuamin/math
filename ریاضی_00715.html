@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>برگه تمرین سود و الگویابی</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fdf8ee;--card:#fff;--ink:#2b2a33;--mut:#6b6877;--acc:#e07a1f;--acc2:#2f7d6d;--line:#e6dcc8;--ok:#d9f2e3;--bad:#fde0dc;--tip:#fff1d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1b22;--card:#26252e;--ink:#f0eee8;--mut:#a9a5b5;--acc:#f0a050;--acc2:#6cc4b0;--line:#3b3947;--ok:#1f4a39;--bad:#5a2a26;--tip:#3a3220}}
+:root[data-theme="dark"]{--bg:#1c1b22;--card:#26252e;--ink:#f0eee8;--mut:#a9a5b5;--acc:#f0a050;--acc2:#6cc4b0;--line:#3b3947;--ok:#1f4a39;--bad:#5a2a26;--tip:#3a3220}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.95;font-size:1.05rem}
+main{max-width:780px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0;color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.guide{background:var(--tip)}
+.guide ol{margin:6px 0;padding-inline-start:22px}
+h2{font-size:1.2rem;margin:0 0 6px;color:var(--acc2)}
+h3{font-size:1rem;margin:10px 0 2px;color:var(--acc)}
+.part{margin:6px 0}
+.scroll{overflow-x:auto;margin:4px 0}
+table{border-collapse:collapse;margin:6px 0;text-align:center;break-inside:avoid}
+th,td{border:1px solid var(--line);padding:3px 8px;min-width:46px}
+th{background:var(--bg);font-weight:700;white-space:nowrap}
+td.hit{background:var(--ok);font-weight:700}
+td input{width:62px;text-align:center;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);padding:2px}
+td input.ok{background:var(--ok)}td input.bad{background:var(--bad)}
+textarea{width:100%;min-height:90px;font:inherit;border:1px dashed var(--line);border-radius:10px;padding:8px;background:var(--card);color:var(--ink)}
+button{font:inherit;border:0;border-radius:10px;padding:6px 14px;margin:4px 0 4px 6px;background:var(--acc);color:#fff;cursor:pointer}
+button.alt{background:var(--acc2)}
+.sol{display:none;background:var(--bg);border-inline-start:4px solid var(--acc2);padding:8px 12px;margin-top:8px;border-radius:8px}
+.sol.show{display:block}
+.sol b{color:var(--acc)}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+:root:root:root{--bg:#fff;--card:#fff;--ink:#000;--mut:#444;--acc:#b85d10;--acc2:#1f5f52;--line:#999;--tip:#fff;--ok:#d6efdd;padding:0}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{width:190mm;background:#fff;color:#000}
+body{font-size:10.5pt;line-height:1.6}
+main{max-width:none;padding:0;margin:0}
+h1{font-size:15pt;margin:0}
+button{display:none!important}
+.card{margin:6px 0;padding:8px 10px;border-radius:6px}
+.guide{break-inside:avoid}
+.part{margin:2px 0}
+.scroll{overflow:visible}
+th,td{padding:1px 5px;min-width:30px}
+td input{width:44px;border:none;background:none}
+.sol{display:block!important;padding:4px 8px;margin-top:4px}
+textarea{display:none}
+body.noans .sol{display:none!important}
+body.noans textarea{display:block;min-height:34mm;border:1px solid #999}
+}
+</style>
+</head>
+<body>
+<main>
+<h1>📒 برگه تمرین: سود، خرید و فروش</h1>
+<p style="color:var(--mut);margin:0">با جدول و شمارش چندتا چندتا</p>
+
+<div class="card guide">
+<h2>راهنمای حل</h2>
+<ol>
+<li><b>سود یعنی چه؟</b> مغازه‌دار چیزی را ارزان‌تر می‌خرد و گران‌تر می‌فروشد. پولی که اضافه می‌گیرد «سود» است.</li>
+<li><b>قیمت فروش:</b> قیمت خرید را با سود جمع کن.</li>
+<li><b>قیمت بسته:</b> قیمت فروش را به اندازهٔ تعداد داخل بسته چندتا چندتا بشمار (مثلاً ۳۰، ۶۰، ۹۰، ...).</li>
+<li><b>جدول بکش:</b> بالا تعداد (۱، ۲، ۳، ...) و پایین سود را بنویس. هر بار به اندازهٔ سود یک عدد زیاد می‌شود.</li>
+<li><b>ادامه بده</b> تا به سودی که می‌خواهی برسی. شمارهٔ بالای آن خانه، تعداد لازم است.</li>
+<li><b>پول خرید:</b> قیمت خرید را به اندازهٔ تعداد، چندتا چندتا بشمار.</li>
+</ol>
+</div>
+
+<div id="qs"></div>
+</main>
+<script>
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+const Q=[
+{shop:"یک لوازم‌التحریری",item:"مداد",cost:20,profit:10,a:3,b:6,k:2,kb:"a",T:150},
+{shop:"یک کتاب‌فروشی",item:"دفتر",cost:30,profit:20,a:4,b:8,k:3,kb:"a",T:200},
+{shop:"یک فروشگاه",item:"پاک‌کن",cost:10,profit:5,a:4,b:8,k:2,kb:"a",T:100},
+{shop:"یک لوازم‌التحریری",item:"خودکار",cost:40,profit:10,a:3,b:6,k:1,kb:"b",T:120},
+{shop:"یک فروشگاه",item:"خط‌کش",cost:15,profit:5,a:4,b:8,k:2,kb:"a",T:75}
+];
+// جدول شمارش: ردیف بالا تعداد، ردیف پایین مقدار؛ آخرین خانه رنگی
+function tbl(step,n,l1,l2,per){
+ per=per||10;let h="";
+ for(let s=1;s<=n;s+=per){
+  const e=Math.min(n,s+per-1);let r1="",r2="";
+  for(let j=s;j<=e;j++){const hit=j===n?' class="hit"':'';r1+=`<td${hit}>${fa(j)}</td>`;r2+=`<td${hit}>${fa(step*j)}</td>`}
+  h+=`<table><tr><th>${l1}</th>${r1}</tr><tr><th>${l2}</th>${r2}</tr></table> `;
+ }
+ return `<div class="scroll">${h}</div>`;
+}
+const root=document.getElementById("qs");
+Q.forEach((q,i)=>{
+ const sell=q.cost+q.profit,pa=q.a*sell,pb=q.b*sell;
+ const size=q.kb==="a"?q.a:q.b,price=q.kb==="a"?pa:pb,tot=q.k*price,cnt=tot/q.profit;
+ const cnt2=q.T/q.profit,spend=cnt2*q.cost;
+ const kw=q.k===1?"یک":q.k===2?"دو":"سه";
+ const packTxt=`${kw} بستهٔ ${fa(size)}تایی`;
+ const el=document.createElement("div");el.className="card";
+ let head="",row="";
+ for(let j=1;j<=6;j++){head+=`<th>${fa(j)}</th>`;row+=`<td><input inputmode="numeric" data-v="${q.profit*j}"></td>`}
+ const plus=Array(q.k).fill(fa(price)).join(" + ");
+ el.innerHTML=`<h2>سوال ${fa(i+1)}</h2>
+ <p>${q.shop} هر ${q.item} را ${fa(q.cost)} تومان از کارخانه می‌خرد.</p>
+ <p class="part"><b>الف)</b> اگر بخواهد از فروش هر ${q.item} ${fa(q.profit)} تومان سود کند، باید هر ${q.item} را چند تومان بفروشد؟</p>
+ <p class="part"><b>ب)</b> یک بستهٔ ${fa(q.a)}تایی و یک بستهٔ ${fa(q.b)}تایی ${q.item} (با قیمت فروش) هر کدام چند تومان می‌شود؟</p>
+ <p class="part"><b>ج)</b> او می‌خواهد با سود فروش ${q.item}، ${packTxt} ${q.item} بخرد. باید چند ${q.item} بفروشد؟</p>
+ <p class="part"><b>د)</b> برای اینکه ${fa(q.T)} تومان سود کند، باید چند ${q.item} بفروشد؟ برای خریدن این ${q.item}‌ها از کارخانه چند تومان پول داده است؟</p>
+ <p style="margin:8px 0 0"><b>جدول کمکی:</b> سود فروش ${q.item}</p>
+ <div class="scroll"><table><tr><th>تعداد ${q.item}</th>${head}</tr><tr><th>سود (تومان)</th>${row}</tr></table></div>
+ <textarea placeholder="فضای حل..."></textarea>
+ <button onclick="this.nextElementSibling.classList.toggle('show')">نمایش / پنهان کردن پاسخ</button>
+ <div class="sol">
+ <h3>الف) قیمت فروش</h3>
+ <p>قیمت خرید + سود: ${fa(q.cost)} + ${fa(q.profit)} = <b>${fa(sell)} تومان</b></p>
+ <h3>ب) قیمت بسته‌ها</h3>
+ <p>هر ${q.item} ${fa(sell)} تومان است. ${fa(sell)}تا${fa(sell)}تا می‌شماریم:</p>
+ <p>بستهٔ ${fa(q.a)}تایی (${fa(q.a)} خانه):</p>${tbl(sell,q.a,"تعداد "+q.item,"قیمت (تومان)")}
+ <p>بستهٔ ${fa(q.b)}تایی (${fa(q.b)} خانه):</p>${tbl(sell,q.b,"تعداد "+q.item,"قیمت (تومان)")}
+ <p>جواب: بستهٔ ${fa(q.a)}تایی <b>${fa(pa)} تومان</b> و بستهٔ ${fa(q.b)}تایی <b>${fa(pb)} تومان</b></p>
+ <h3>ج) چند ${q.item} بفروشد؟</h3>
+ <p>قیمت ${packTxt}: ${q.k===1?`<b>${fa(tot)} تومان</b> (از قسمت ب)`:`${plus} = <b>${fa(tot)} تومان</b>`}</p>
+ <p>از فروش هر ${q.item} ${fa(q.profit)} تومان سود می‌گیرد. ${fa(q.profit)}تا${fa(q.profit)}تا می‌شماریم تا به ${fa(tot)} برسیم:</p>
+ ${tbl(q.profit,cnt,"تعداد "+q.item,"سود (تومان)")}
+ <p>به ${fa(tot)} در خانهٔ ${fa(cnt)}ام رسیدیم. جواب: <b>${fa(cnt)} ${q.item}</b></p>
+ <h3>د) سود ${fa(q.T)} تومان</h3>
+ <p>${fa(q.profit)}تا${fa(q.profit)}تا می‌شماریم تا به ${fa(q.T)} برسیم:</p>
+ ${tbl(q.profit,cnt2,"تعداد "+q.item,"سود (تومان)")}
+ <p>جواب: <b>${fa(cnt2)} ${q.item}</b> باید بفروشد.</p>
+ <p>پول خرید از کارخانه: هر ${q.item} ${fa(q.cost)} تومان خریده شده است. ${fa(q.cost)}تا${fa(q.cost)}تا می‌شماریم (${fa(cnt2)} خانه):</p>
+ ${tbl(q.cost,cnt2,"تعداد "+q.item,"پول خرید (تومان)")}
+ <p>جواب: <b>${fa(spend)} تومان</b></p>
+ </div>`;
+ root.appendChild(el);
+});
+</script>
+</body>
+</html>
